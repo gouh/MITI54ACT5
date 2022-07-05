@@ -6,6 +6,7 @@ Posterior a descargar el proyecto, es posible ejecutar desde el archivo "run.sh"
 
 ```sh
 sudo chmod +x ./run.sh
+./run.sh
 ```
 
 Como se puede apreciar únicamente es necesario darle permisos al archivo indicado, de otra manera será necesario configurarlo
