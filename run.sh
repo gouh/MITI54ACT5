@@ -7,9 +7,9 @@ docker-compose down --remove-orphans
 docker-compose up -d
 
 # Time to up services
+echo "Espere por favor, en un momento realizaremos las instalaciones de dependencias."
 sleep 10s
 
-echo "Espere por favor, en un momento realizaremos las instalaciones de dependencias."
 
 # Install dependencies
 docker exec -it pizzeria_php bash -c "composer install"
