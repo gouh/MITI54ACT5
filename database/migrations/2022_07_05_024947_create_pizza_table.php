@@ -16,6 +16,7 @@ class CreatePizzaTable extends Migration
         Schema::create('pizza', function (Blueprint $table) {
             $table->integer('pizza_id', true);
             $table->string('nombre', 20);
+            $table->timestamps();
         });
     }
 
