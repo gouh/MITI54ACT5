@@ -11,8 +11,6 @@ services:
             - MYSQL_PASSWORD=${MARIADB_PASSWORD}
             - MYSQL_USER=${MARIADB_USER}
             - MYSQL_DATABASE=${MARIADB_DATABASE}
-        ports:
-            - 3307:3306
 
     php:
         container_name: '${PHP_CONTAINER_NAME}'
