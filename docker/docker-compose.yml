@@ -37,7 +37,7 @@ services:
         environment:
             - PHP_CONTAINER_NAME=${PHP_CONTAINER_NAME}
             - CODE_PATH=${APP_CODE_PATH_CONTAINER}
-            - PROJECT_NAME=${COMPOSE_PROJECT_NAME}
+            - PROJECT_NAME=pizzeria
         links:
             - php
         ports:
