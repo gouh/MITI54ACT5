@@ -11,6 +11,8 @@ services:
             - MYSQL_PASSWORD=${MARIADB_PASSWORD}
             - MYSQL_USER=${MARIADB_USER}
             - MYSQL_DATABASE=${MARIADB_DATABASE}
+        ports:
+            - 3307:3306
 
     php:
         container_name: '${PHP_CONTAINER_NAME}'
@@ -23,7 +25,8 @@ services:
                 WORKSPACE_TIMEZONE: '${WORKSPACE_TIMEZONE}'
         volumes:
             - '${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}:rw'
-
+        links:
+            - mariadb
     nginx:
         container_name: '${NGINX_CONTAINER_NAME}'
         image: 'nginx:alpine'
