@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+    mariadb:
+        container_name: ${MARIADB_CONTAINER_NAME}
+        image: mariadb:10.7
+        volumes:
+            - ./mariadb:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+            - MYSQL_PASSWORD=${MARIADB_PASSWORD}
+            - MYSQL_USER=${MARIADB_USER}
+            - MYSQL_DATABASE=${MARIADB_DATABASE}
+
+    php:
+        container_name: '${PHP_CONTAINER_NAME}'
+        working_dir: '${APP_CODE_PATH_CONTAINER}'
+        image: '${PHP_CONTAINER_NAME}'
+        build:
+            context: php
+            args:
+                PHP_VERSION: '${PHP_VERSION}'
+                WORKSPACE_TIMEZONE: '${WORKSPACE_TIMEZONE}'
+        volumes:
+            - '${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}:rw'
+
+    nginx:
+        container_name: '${NGINX_CONTAINER_NAME}'
+        image: 'nginx:alpine'
+        volumes:
+            - '${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}'
+            - '${NGINX_HOST_LOG_PATH}:/var/log/nginx'
+            - '${NGINX_SITES_PATH}:/etc/nginx/templates'
+        environment:
+            - PHP_CONTAINER_NAME=${PHP_CONTAINER_NAME}
+            - CODE_PATH=${APP_CODE_PATH_CONTAINER}
+            - PROJECT_NAME=${COMPOSE_PROJECT_NAME}
+        links:
+            - php
+        ports:
+            - '${NGINX_PORT_EXPOSE_LOCAL}:80'
