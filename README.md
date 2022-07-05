@@ -17,6 +17,9 @@ No es necesario ejecutar ningún comando mas ya que el script se encarga de corr
 
 ## CRUD Pizza
 
+### Routes
+![delete](gitimg/routes.png)
+
 ### Create
 ![create](gitimg/create.png)
 
