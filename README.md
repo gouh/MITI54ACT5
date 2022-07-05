@@ -1,6 +1,7 @@
 ## Instalacion
 #### dependencias
 * docker
+* docker-compose (en especifico "docker-compose" no "docker compose")
 
 Posterior a descargar el proyecto, es posible ejecutar desde el archivo "run.sh" dentro de la raíz del proyecto.
 
